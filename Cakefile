@@ -127,7 +127,9 @@ window.Tower.logger = if this["_console"] then _console else console
                     result += code
                     compileEach 'middleware', ((path) -> !!path.match(/(location|route)/)), (code) ->
                       result += code
-                
+                      
+                      fs.writeFileSync('/Users/andy/badFile.coffee', result)
+                      
                       # result += fs.readFileSync("./src/tower/middleware/router.coffee", "utf-8").replace(/module\.exports\s*=.*\s*/g, "") + "\n"
                       mint.coffee result, bare: false, (error, result) ->
                         _console.error error.stack if error
